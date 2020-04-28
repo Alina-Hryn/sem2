@@ -1,0 +1,45 @@
+when  -> KEYWORD
+w -> IDENTIFIER
+when  -> KEYWORD
+0 -> INT_LIT
+_12sd_ -> IDENTIFIER
+whenq  -> IDENTIFIER
+wHjsfg0_12sd_ -> IDENTIFIER
+/ -> OPERATOR
+whenQwswHjsfg0_12sd_ -> IDENTIFIER
+, -> SEP_OP
+when_wHjsfg0_12sd_ -> IDENTIFIER
+. -> METHOD_OP
+when7wHjsfg0_12sd_ -> IDENTIFIER
+5  -> INT_LIT
++  -> PLUS OR MINUS
+4  -> INT_LIT
+-  -> PLUS OR MINUS
+3  -> INT_LIT
+*  -> OPERATOR
+2  -> INT_LIT
+puts -> PRINT_OP
+( -> FUNCTION_OP
+'Some warnings occurred:\n'  -> STRING_LIT
++  -> PLUS OR MINUS
+warnings -> IDENTIFIER
+. -> UNKNOWN
+join -> IDENTIFIER
+( -> FUNCTION_OP
+"\n" -> STRING_LIT
+) -> FUNCTION_OP
+)  -> FUNCTION_OP
+puts  -> PRINT_OP
+"iteration #{ -> STRING_LIT
+5 -> INT_LIT
+}" -> STRING_LIT
+"iteration #{ -> STRING_LIT
+2 -> INT_LIT
+. -> UNKNOWN
+class -> CLASS_OP
+} fervefgvrt"  -> STRING_LIT
+"iteration #{   -> STRING_LIT
+2.04    -> FLOAT_LIT
+} fervefgvrt #{ -> STRING_LIT
+2.04 -> FLOAT_LIT
+}"  -> STRING_LIT

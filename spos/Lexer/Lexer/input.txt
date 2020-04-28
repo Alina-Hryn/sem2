@@ -1,0 +1,26 @@
+when w
+when 0_12sd_
+whenq wHjsfg0_12sd_/
+whenQwswHjsfg0_12sd_,
+when_wHjsfg0_12sd_.
+when7wHjsfg0_12sd_
+=begin 
+def iterator
+yield 'yield, '
+yield 'blocks,'
+yield 'Ruby'
+end
+puts 1.class
+iterator {|yeilded| print "use #{yeilded}"}
+qwqwqwkkjhfjendvkjejgvhjdnv
+sdfgvsefb
+efbvesfb
+ervergtfcb
+vb
+dof = 12
+=end
+5 + 4 - 3 * 2 
+puts('Some warnings occurred:\n' + warnings.join("\n")) 
+puts "iteration #{5}"
+"iteration #{2.class} fervefgvrt" 
+"iteration #{  2.04   } fervefgvrt #{2.04}" 

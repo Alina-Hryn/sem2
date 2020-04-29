@@ -9,16 +9,6 @@ using namespace std;
 #define INPUT_LIN_TAM 1000
 #define MAX_TABLE_LEN 20
 
-
-map <string, char*> tokens;
-
-//keywords and categories
-//ДОБАВИТЬ BITWISE OPERATORS : |, & , ^
-char ruby_operators[][MAX_TABLE_LEN] = { "..", "||", "|", "^", "&&", "&", "<=>", "==",
-"===", ">", ">=", "<", "<=", "<<", ">>", "+@", "-@", "[]", "+", "-", "**", "*", "/", "%",
-"[]=", "\0" };
-char ruby_op_assign[][MAX_TABLE_LEN] = { "+=", "-=", "*=", "/=", "%=", "**=",
-"&=", "|=", "^=", "<<=", ">>=", "&&=", "||=", "=", "\0" };
 char ruby_stmt_op[][MAX_TABLE_LEN] = { "alias", "{", "}", "defined?", "do", "then", "if", "elsif", "else", "unless", "case",
 "when", "until", "ensure", "return", "yield", "begin", "end", "def", "undef", "\0" };
 char ruby_method_op[][MAX_TABLE_LEN] = { ".", "::", "super", "\0" };
@@ -51,7 +41,7 @@ char ruby_table[][MAX_TABLE_LEN] = { "UNKNOWN", "OPERATOR", "SUM_OP",
 "SUB_OP", "MULT_OP", "DIV_OP", "MOD_OP", "EXP_OP", "ASSIGN_OPERATOR",
 "KEYWORD", "BLOCK_OP", "COND_OP", "COMMAND_OP", "METHOD_OP", "FUNCTION_OP",
 "END_STATEMENT_OP", "GLOBAL_ID", "OPERATION_ID", "VAR_ID", "LOGIC_OP", "BOOL_OP",
-"LOOP_OP", "SEP_OP", "STRING_LIT", "INT_LIT", "FLOAT_LIT", "PRINT_OP", "CLASS_OP", "LIST_ASSOC_OP", "IDENTIFIER", "COMMENT", "PLUS OR MINUS" };
+"LOOP_OP", "SEP_OP", "STRING LITERAL", "INTEGER LITERAL", "FLOAT LITERAL", "PRINT_OP", "CLASS_OP", "LIST_ASSOC_OP", "IDENTIFIER", "COMMENT", "PLUS OR MINUS" };
 
 
 // declaration of methods
@@ -68,46 +58,25 @@ int main() {
 	int char_itr = 0; //used to cycle through characters 
 	int tmp_itr = 0; //same func as char_itr
 	int t_tok, t_len; //id of token and lexem length(size)
-	char* input_lin = (char*)malloc(INPUT_LIN_TAM * sizeof(char)); // buffer variable
-	//maintains the line currently being analyzed
+	char* input_lin = (char*)malloc(INPUT_LIN_TAM * sizeof(char)); 
 
-   /*
-	ofstream MyFile("input.txt");
-	MyFile << "Files can be tricky, but it is fun enough!";
-
-	MyFile.close();
-
-	*/
 	ofstream outputFile("output.txt");
 	ifstream inputFile("input.txt");
-	// while (std::cin.getline(input_lin, INPUT_LIN_TAM)) { //reads input line by line
 	while (inputFile) {
 		inputFile.getline(input_lin, 255);
-		// skip empty line
-		if (input_lin[0] == '\n' || input_lin[0] == '\0') {
-			lin_num++;
-			continue;
-		}
-		// continue if is not empty
 		char_itr = 0; // resets char_itr
-		std::cout << ">> lin[" << lin_num++ << "]: " << input_lin << std::endl; // print line
-		//while it is not the end of line
+		std::cout << lin_num++ << "   " << input_lin << std::endl; // print line
 		while (input_lin[char_itr] != '\n' && input_lin[char_itr] != '\0') {
 			t_tok = 0; //token is not known
 			t_len = 0; // lexem size = 0
 
 			check_token(&input_lin[char_itr], &t_tok, &t_len); //checks current lexem is token
 
-			// if multi-line comment or string is open doesn`t analyze
-			if (global_comment_open || global_string_open) {
-				char_itr++;
-				break;
-			}
+		
 			/*t_tok <0 was agreed as a universal identifier that that line should be ignored*/
 			if (t_tok < 0) {
 				break;
 			}
-			// otherwise print lexem - token
 			else {
 				print_lexem(&input_lin[char_itr], t_len);
 				std::cout << " -> ";
@@ -133,15 +102,9 @@ int main() {
 	}
 	outputFile.close();
 	inputFile.close();
-	/* aqui, ao chegar no final do programa, checa se a var. global_comment_open
-	*  foi fechada, senão, isso indica que um comentário não foi corretamente finalizado:
-	*/
-	// checks if comment is ended 
-	// if not => print that comment has wrong end
 	if (global_comment_open) {
 		std::cout << "PLEASE END COMMENT" << std::endl;
 	}
-	// checks if strings were closed
 	if (global_string_open) {
 		std::cout << "PLEASE CLOSE STRINGS" << std::endl;
 	}
@@ -192,17 +155,16 @@ int check_if_keyword(char* lex, char list[][MAX_TABLE_LEN]) {
 
 //checks if lexem is comment
 int check_if_comment(char* lex) {
-	if (lex[0] == '#') return 1; // comment in one line
-   // checks if it is multi-line comment (begins from =begin)
+	if (lex[0] == '#') return strlen(lex);
 	else if (check_if_keyword(lex, ruby_comment_begin) > 0) {
-		global_comment_open = true; // change global var to show that comment is open
-		return 1; //=>shows that it is comment
+		global_comment_open = true;
+		return strlen(lex);
 	}
-	// checks if comment ends =end and close comment
 	else if (check_if_keyword(lex, ruby_comment_end) > 0) {
-		global_comment_open = false; // change to show it is closed
-		return 1;
+		global_comment_open = false;
+		return strlen(lex);
 	}
+	else if (global_comment_open) return strlen(lex);
 	return 0;
 }
 
@@ -264,6 +226,54 @@ int check_if_operator(char* lex) {
 			i++;
 		return skip_spaces_after_word(lex, i++);
 		break;
+	case '|':
+	case '&':
+	case '<':
+	case '>':
+		i++;
+		if (lex[i] == lex[i - 1]) {
+			i++;
+			if (lex[i] == '=') i++;
+		}
+		else if (lex[i] == '=') {
+			i++;
+			if (lex[i - 2] == '<' && lex[i] == '>')
+				i++;
+		}
+		return skip_spaces_after_word(lex, i++);
+		break;
+	case '^':
+		i++;
+		return skip_spaces_after_word(lex, i++);
+		break;
+	case '=':
+		i++;
+		if (lex[i] == '=') {
+			i++;
+			if (lex[i] == '=') i++;
+		}
+		return skip_spaces_after_word(lex, i++);
+		break;
+	case '*':
+	case '/':
+	case '%':
+		i++;
+		if (lex[i] == '=') {
+			i++;
+		}
+		else if (lex[i] == lex[i - 1] && lex[i] == '*') {
+			i++;
+			if (lex[i] == '=') i++;
+		}
+		return skip_spaces_after_word(lex, i++);
+		break;
+	case '[':
+		if (lex[i + 1] == ']') {
+			i += 2;
+			if (lex[i] == '=') i++;
+		}
+		return skip_spaces_after_word(lex, i++);
+		break;
 	default:
 		return 0;
 	}
@@ -306,24 +316,15 @@ int check_if_string(char* lexem) {
 }
 
 void check_token(char* lex, int* tok, int* len) {
-	*len = check_if_operator(lex);
-	if (*len > 0) {
-		*tok = 31;
-		return;
-	}
+
 	*len = check_if_comment(lex);
 	if (*len > 0) {
-		*tok = -1;
+		*tok = 30;
 		return;
 	}
 	*len = check_if_string(lex);
 	if (*len > 0) {
 		*tok = 23;
-		return;
-	}
-	*len = check_if_keyword(lex, ruby_operators);
-	if (*len > 0) {
-		*tok = 1;
 		return;
 	}
 	*len = check_if_keyword(lex, ruby_func_op);
@@ -346,13 +347,12 @@ void check_token(char* lex, int* tok, int* len) {
 		*tok = 24;
 		return;
 	}
-
-
-	*len = check_if_keyword(lex, ruby_op_assign);
+	*len = check_if_operator(lex);
 	if (*len > 0) {
-		*tok = 8;
+		*tok = 31;
 		return;
 	}
+
 	*len = check_if_keyword(lex, ruby_method_op);
 	if (*len > 0) {
 		*tok = 13;

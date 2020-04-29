@@ -1,45 +1,53 @@
-when  -> KEYWORD
-w -> IDENTIFIER
-when  -> KEYWORD
-0 -> INT_LIT
-_12sd_ -> IDENTIFIER
-whenq  -> IDENTIFIER
-wHjsfg0_12sd_ -> IDENTIFIER
-/ -> OPERATOR
-whenQwswHjsfg0_12sd_ -> IDENTIFIER
-, -> SEP_OP
-when_wHjsfg0_12sd_ -> IDENTIFIER
-. -> METHOD_OP
-when7wHjsfg0_12sd_ -> IDENTIFIER
-5  -> INT_LIT
+-152  -> INTEGER LITERAL
+=begin gf erg  gerg -> COMMENT
+dfwef -> COMMENT
+ewrc = end -> COMMENT
+# edfvghjh rdfvhbj yghv -> COMMENT
+qwerty -> COMMENT
+=begin -> COMMENT
+def iterator -> COMMENT
+yield 'yield, ' -> COMMENT
+yield 'blocks,' -> COMMENT
+yield 'Ruby' -> COMMENT
+end -> COMMENT
+puts 1.class -> COMMENT
+iterator {|yeilded| print "use #{yeilded}"} -> COMMENT
+qwqwqwkkjhfjendvkjejgvhjdnv -> COMMENT
+sdfgvsefb -> COMMENT
+efbvesfb -> COMMENT
+ervergtfcb -> COMMENT
+vb -> COMMENT
+dof = 12 -> COMMENT
+=end -> COMMENT
+5  -> INTEGER LITERAL
 +  -> PLUS OR MINUS
-4  -> INT_LIT
+4  -> INTEGER LITERAL
 -  -> PLUS OR MINUS
-3  -> INT_LIT
-*  -> OPERATOR
-2  -> INT_LIT
+3  -> INTEGER LITERAL
+*  -> PLUS OR MINUS
+2  -> INTEGER LITERAL
 puts -> PRINT_OP
 ( -> FUNCTION_OP
-'Some warnings occurred:\n'  -> STRING_LIT
+'Some warnings occurred:\n'  -> STRING LITERAL
 +  -> PLUS OR MINUS
 warnings -> IDENTIFIER
 . -> UNKNOWN
 join -> IDENTIFIER
 ( -> FUNCTION_OP
-"\n" -> STRING_LIT
+"\n" -> STRING LITERAL
 ) -> FUNCTION_OP
 )  -> FUNCTION_OP
 puts  -> PRINT_OP
-"iteration #{ -> STRING_LIT
-5 -> INT_LIT
-}" -> STRING_LIT
-"iteration #{ -> STRING_LIT
-2 -> INT_LIT
+"iteration #{ -> STRING LITERAL
+5 -> INTEGER LITERAL
+}" -> STRING LITERAL
+"iteration #{ -> STRING LITERAL
+2 -> INTEGER LITERAL
 . -> UNKNOWN
 class -> CLASS_OP
-} fervefgvrt"  -> STRING_LIT
-"iteration #{   -> STRING_LIT
-2.04    -> FLOAT_LIT
-} fervefgvrt #{ -> STRING_LIT
-2.04 -> FLOAT_LIT
-}"  -> STRING_LIT
+} fervefgvrt"  -> STRING LITERAL
+"iteration #{   -> STRING LITERAL
+2.04    -> FLOAT LITERAL
+} fervefgvrt #{ -> STRING LITERAL
+2.04 -> FLOAT LITERAL
+}"  -> STRING LITERAL

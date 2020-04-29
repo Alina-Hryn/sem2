@@ -1,10 +1,7 @@
-when w
-when 0_12sd_
-whenq wHjsfg0_12sd_/
-whenQwswHjsfg0_12sd_,
-when_wHjsfg0_12sd_.
-when7wHjsfg0_12sd_
-=begin 
+-152 
+# edfvghjh rdfvhbj yghv
+qwerty
+=begin
 def iterator
 yield 'yield, '
 yield 'blocks,'

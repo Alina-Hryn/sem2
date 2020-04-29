@@ -1,53 +1,1539 @@
--152  -> INTEGER LITERAL
-=begin gf erg  gerg -> COMMENT
-dfwef -> COMMENT
-ewrc = end -> COMMENT
-# edfvghjh rdfvhbj yghv -> COMMENT
-qwerty -> COMMENT
-=begin -> COMMENT
-def iterator -> COMMENT
-yield 'yield, ' -> COMMENT
-yield 'blocks,' -> COMMENT
-yield 'Ruby' -> COMMENT
-end -> COMMENT
-puts 1.class -> COMMENT
-iterator {|yeilded| print "use #{yeilded}"} -> COMMENT
-qwqwqwkkjhfjendvkjejgvhjdnv -> COMMENT
-sdfgvsefb -> COMMENT
-efbvesfb -> COMMENT
-ervergtfcb -> COMMENT
-vb -> COMMENT
-dof = 12 -> COMMENT
-=end -> COMMENT
-5  -> INTEGER LITERAL
-+  -> PLUS OR MINUS
-4  -> INTEGER LITERAL
--  -> PLUS OR MINUS
-3  -> INTEGER LITERAL
-*  -> PLUS OR MINUS
-2  -> INTEGER LITERAL
-puts -> PRINT_OP
-( -> FUNCTION_OP
-'Some warnings occurred:\n'  -> STRING LITERAL
-+  -> PLUS OR MINUS
-warnings -> IDENTIFIER
-. -> UNKNOWN
-join -> IDENTIFIER
-( -> FUNCTION_OP
-"\n" -> STRING LITERAL
-) -> FUNCTION_OP
-)  -> FUNCTION_OP
-puts  -> PRINT_OP
-"iteration #{ -> STRING LITERAL
-5 -> INTEGER LITERAL
-}" -> STRING LITERAL
-"iteration #{ -> STRING LITERAL
-2 -> INTEGER LITERAL
-. -> UNKNOWN
-class -> CLASS_OP
-} fervefgvrt"  -> STRING LITERAL
-"iteration #{   -> STRING LITERAL
-2.04    -> FLOAT LITERAL
-} fervefgvrt #{ -> STRING LITERAL
-2.04 -> FLOAT LITERAL
-}"  -> STRING LITERAL
+COMMENT -> # This is a comment
+COMMENT -> =begin
+COMMENT -> This is a multi-line comment.
+COMMENT -> The beginning line must start with "=begin"
+COMMENT -> and the ending line must start with "=end".
+COMMENT -> You can do this, or start each line in
+COMMENT -> a multi-line comment with the # character.
+COMMENT -> =end
+COMMENT -> # In Ruby, (almost) everything is an object.
+COMMENT -> # This includes numbers...
+INTEGER LITERAL -> 3
+UNKNOWN -> .
+IDENTIFIER -> class 
+COMMENT -> #=> Integer
+COMMENT -> # ...and strings...
+STRING LITERAL -> "Hello"
+UNKNOWN -> .
+IDENTIFIER -> class 
+COMMENT -> #=> String
+COMMENT -> # ...and even methods!
+STRING LITERAL -> "Hello"
+UNKNOWN -> .
+IDENTIFIER -> method
+PUNCTUATION -> (
+UNKNOWN -> :
+IDENTIFIER -> class
+PUNCTUATION -> )
+UNKNOWN -> .
+IDENTIFIER -> class 
+COMMENT -> #=> Method
+COMMENT -> # Some basic arithmetic
+INTEGER LITERAL -> 1 
+OPERATOR -> + 
+INTEGER LITERAL -> 1 
+COMMENT -> #=> 2
+INTEGER LITERAL -> 8 
+OPERATOR -> - 
+INTEGER LITERAL -> 1 
+COMMENT -> #=> 7
+INTEGER LITERAL -> 10 
+OPERATOR -> * 
+INTEGER LITERAL -> 2 
+COMMENT -> #=> 20
+INTEGER LITERAL -> 35 
+OPERATOR -> / 
+INTEGER LITERAL -> 5 
+COMMENT -> #=> 7
+INTEGER LITERAL -> 2 
+OPERATOR -> ** 
+INTEGER LITERAL -> 5 
+COMMENT -> #=> 32
+INTEGER LITERAL -> 5 
+OPERATOR -> % 
+INTEGER LITERAL -> 3 
+COMMENT -> #=> 2
+COMMENT -> # Bitwise operators
+INTEGER LITERAL -> 3 
+OPERATOR -> & 
+INTEGER LITERAL -> 5 
+COMMENT -> #=> 1
+INTEGER LITERAL -> 3 
+OPERATOR -> | 
+INTEGER LITERAL -> 5 
+COMMENT -> #=> 7
+INTEGER LITERAL -> 3 
+OPERATOR -> ^ 
+INTEGER LITERAL -> 5 
+COMMENT -> #=> 6
+COMMENT -> # Arithmetic is just syntactic sugar
+COMMENT -> # for calling a method on an object
+FLOAT LITERAL -> 1.
+OPERATOR -> +
+UNKNOWN -> (
+INTEGER LITERAL -> 3
+PUNCTUATION -> ) 
+COMMENT -> #=> 4
+FLOAT LITERAL -> 10.
+OPERATOR -> * 
+INTEGER LITERAL -> 5 
+COMMENT -> #=> 50
+INTEGER LITERAL -> 100
+UNKNOWN -> .
+IDENTIFIER -> methods
+UNKNOWN -> .
+IDENTIFIER -> include
+UNKNOWN -> ?
+PUNCTUATION -> (
+PUNCTUATION -> :
+OPERATOR -> /
+PUNCTUATION -> ) 
+COMMENT -> #=> true
+COMMENT -> # Special values are objects
+KEYWORD -> nil 
+COMMENT -> # equivalent to null in other languages
+KEYWORD -> true 
+COMMENT -> # truth
+KEYWORD -> false 
+COMMENT -> # falsehood
+KEYWORD -> nil
+UNKNOWN -> .
+IDENTIFIER -> class 
+COMMENT -> #=> NilClass
+KEYWORD -> true
+UNKNOWN -> .
+IDENTIFIER -> class 
+COMMENT -> #=> TrueClass
+KEYWORD -> false
+UNKNOWN -> .
+IDENTIFIER -> class 
+COMMENT -> #=> FalseClass
+COMMENT -> # Equality
+INTEGER LITERAL -> 1 
+OPERATOR -> == 
+INTEGER LITERAL -> 1 
+COMMENT -> #=> true
+INTEGER LITERAL -> 2 
+OPERATOR -> == 
+INTEGER LITERAL -> 1 
+COMMENT -> #=> false
+COMMENT -> # Inequality
+INTEGER LITERAL -> 1 
+UNKNOWN -> !
+OPERATOR -> = 
+INTEGER LITERAL -> 1 
+COMMENT -> #=> false
+INTEGER LITERAL -> 2 
+UNKNOWN -> !
+OPERATOR -> = 
+INTEGER LITERAL -> 1 
+COMMENT -> #=> true
+COMMENT -> # Apart from false itself, nil is the only other 'falsey' value
+UNKNOWN -> !
+UNKNOWN -> !
+KEYWORD -> nil   
+COMMENT -> #=> false
+UNKNOWN -> !
+UNKNOWN -> !
+KEYWORD -> false 
+COMMENT -> #=> false
+UNKNOWN -> !
+UNKNOWN -> !
+INTEGER LITERAL -> 0     
+COMMENT -> #=> true
+UNKNOWN -> !
+UNKNOWN -> !
+STRING LITERAL -> ""    
+COMMENT -> #=> true
+COMMENT -> # More comparisons
+INTEGER LITERAL -> 1 
+OPERATOR -> < 
+INTEGER LITERAL -> 10 
+COMMENT -> #=> true
+INTEGER LITERAL -> 1 
+OPERATOR -> > 
+INTEGER LITERAL -> 10 
+COMMENT -> #=> false
+INTEGER LITERAL -> 2 
+OPERATOR -> <= 
+INTEGER LITERAL -> 2 
+COMMENT -> #=> true
+INTEGER LITERAL -> 2 
+OPERATOR -> >= 
+INTEGER LITERAL -> 2 
+COMMENT -> #=> true
+COMMENT -> # Combined comparison operator (returns `1` when the first argument is greater, 
+COMMENT -> # `-1` when the second argument is greater, and `0` otherwise)
+INTEGER LITERAL -> 1 
+OPERATOR -> <=> 
+INTEGER LITERAL -> 10 
+COMMENT -> #=> -1 (1 < 10)
+INTEGER LITERAL -> 10 
+OPERATOR -> <=> 
+INTEGER LITERAL -> 1 
+COMMENT -> #=> 1 (10 > 1)
+INTEGER LITERAL -> 1 
+OPERATOR -> <=> 
+INTEGER LITERAL -> 1 
+COMMENT -> #=> 0 (1 == 1)
+COMMENT -> # Logical operators
+KEYWORD -> true 
+OPERATOR -> && 
+KEYWORD -> false 
+COMMENT -> #=> false
+KEYWORD -> true 
+OPERATOR -> || 
+KEYWORD -> false 
+COMMENT -> #=> true
+COMMENT -> # There are alternate versions of the logical operators with much lower
+COMMENT -> # precedence. These are meant to be used as flow-control constructs to chain
+COMMENT -> # statements together until one of them returns true or false.
+COMMENT -> # `do_something_else` only called if `do_something` succeeds.
+IDENTIFIER -> do_something
+PUNCTUATION -> (
+PUNCTUATION -> ) 
+KEYWORD -> and 
+IDENTIFIER -> do_something_else
+PUNCTUATION -> (
+PUNCTUATION -> )
+COMMENT -> # `log_error` only called if `do_something` fails.
+IDENTIFIER -> do_something
+PUNCTUATION -> (
+PUNCTUATION -> ) 
+KEYWORD -> or 
+IDENTIFIER -> log_error
+PUNCTUATION -> (
+PUNCTUATION -> )
+COMMENT -> # String interpolation
+IDENTIFIER -> placeholder 
+OPERATOR -> = 
+STRING LITERAL -> 'use string interpolation'
+STRING LITERAL -> "I can #{
+IDENTIFIER -> placeholder
+STRING LITERAL -> } when using double quoted strings"
+COMMENT -> #=> "I can use string interpolation when using double quoted strings"
+COMMENT -> # You can combine strings using `+`, but not with other types
+STRING LITERAL -> 'hello ' 
+OPERATOR -> + 
+STRING LITERAL -> 'world'  
+COMMENT -> #=> "hello world"
+STRING LITERAL -> 'hello ' 
+OPERATOR -> + 
+INTEGER LITERAL -> 3 
+COMMENT -> #=> TypeError: can't convert Fixnum into String
+STRING LITERAL -> 'hello ' 
+OPERATOR -> + 
+INTEGER LITERAL -> 3
+UNKNOWN -> .
+IDENTIFIER -> to_s 
+COMMENT -> #=> "hello 3"
+STRING LITERAL -> "hello #{
+INTEGER LITERAL -> 3
+STRING LITERAL -> }" 
+COMMENT -> #=> "hello 3"
+COMMENT -> # ...or combine strings and operators
+STRING LITERAL -> 'hello ' 
+OPERATOR -> * 
+INTEGER LITERAL -> 3 
+COMMENT -> #=> "hello hello hello "
+COMMENT -> # ...or append to string
+STRING LITERAL -> 'hello' 
+OPERATOR -> << 
+STRING LITERAL -> ' world' 
+COMMENT -> #=> "hello world"
+COMMENT -> # You can print to the output with a newline at the end
+IDENTIFIER -> puts 
+STRING LITERAL -> "I'm printing!"
+COMMENT -> #=> I'm printing!
+COMMENT -> #=> nil
+COMMENT -> # ...or print to the output without a newline
+IDENTIFIER -> print 
+STRING LITERAL -> "I'm printing!"
+COMMENT -> #=> "I'm printing!" => nil
+COMMENT -> # Variables
+IDENTIFIER -> x 
+OPERATOR -> = 
+INTEGER LITERAL -> 25 
+COMMENT -> #=> 25
+IDENTIFIER -> x 
+COMMENT -> #=> 25
+COMMENT -> # Note that assignment returns the value assigned.
+COMMENT -> # This means you can do multiple assignment.
+IDENTIFIER -> x 
+OPERATOR -> = 
+IDENTIFIER -> y 
+OPERATOR -> = 
+INTEGER LITERAL -> 10 
+COMMENT -> #=> 10
+IDENTIFIER -> x 
+COMMENT -> #=> 10
+IDENTIFIER -> y 
+COMMENT -> #=> 10
+COMMENT -> # By convention, use snake_case for variable names.
+IDENTIFIER -> snake_case 
+OPERATOR -> = 
+KEYWORD -> true
+COMMENT -> # Use descriptive variable names
+IDENTIFIER -> path_to_project_root 
+OPERATOR -> = 
+STRING LITERAL -> '/good/name/'
+IDENTIFIER -> m 
+OPERATOR -> = 
+STRING LITERAL -> '/bad/name/'
+COMMENT -> # Symbols are immutable, reusable constants represented internally by an
+COMMENT -> # integer value. They're often used instead of strings to efficiently convey
+COMMENT -> # specific, meaningful values.
+UNKNOWN -> :
+IDENTIFIER -> pending
+UNKNOWN -> .
+IDENTIFIER -> class 
+COMMENT -> #=> Symbol
+IDENTIFIER -> status 
+OPERATOR -> = 
+UNKNOWN -> :
+IDENTIFIER -> pending
+IDENTIFIER -> status 
+OPERATOR -> == 
+UNKNOWN -> :
+IDENTIFIER -> pending 
+COMMENT -> #=> true
+IDENTIFIER -> status 
+OPERATOR -> == 
+STRING LITERAL -> 'pending' 
+COMMENT -> #=> false
+IDENTIFIER -> status 
+OPERATOR -> == 
+UNKNOWN -> :
+IDENTIFIER -> approved 
+COMMENT -> #=> false
+COMMENT -> # Strings can be converted into symbols and vice versa.
+IDENTIFIER -> status
+UNKNOWN -> .
+IDENTIFIER -> to_s 
+COMMENT -> #=> "pending"
+STRING LITERAL -> "argon"
+UNKNOWN -> .
+IDENTIFIER -> to_sym 
+COMMENT -> #=> :argon
+COMMENT -> # Arrays
+COMMENT -> # This is an array.
+IDENTIFIER -> array 
+OPERATOR -> = 
+UNKNOWN -> [
+INTEGER LITERAL -> 1
+PUNCTUATION -> , 
+INTEGER LITERAL -> 2
+PUNCTUATION -> , 
+INTEGER LITERAL -> 3
+PUNCTUATION -> , 
+INTEGER LITERAL -> 4
+PUNCTUATION -> , 
+INTEGER LITERAL -> 5
+PUNCTUATION -> ] 
+COMMENT -> #=> [1, 2, 3, 4, 5]
+COMMENT -> # Arrays can contain different types of items.
+UNKNOWN -> [
+INTEGER LITERAL -> 1
+PUNCTUATION -> , 
+STRING LITERAL -> 'hello'
+PUNCTUATION -> , 
+KEYWORD -> false
+PUNCTUATION -> ] 
+COMMENT -> #=> [1, "hello", false]
+COMMENT -> # Arrays can be indexed.
+COMMENT -> # From the front...
+IDENTIFIER -> array
+UNKNOWN -> [
+INTEGER LITERAL -> 0
+PUNCTUATION -> ] 
+COMMENT -> #=> 1
+IDENTIFIER -> array
+UNKNOWN -> .
+IDENTIFIER -> first 
+COMMENT -> #=> 1
+IDENTIFIER -> array
+UNKNOWN -> [
+INTEGER LITERAL -> 12
+PUNCTUATION -> ] 
+COMMENT -> #=> nil
+COMMENT -> # ...or from the back...
+IDENTIFIER -> array
+PUNCTUATION -> [
+INTEGER LITERAL -> -1
+PUNCTUATION -> ] 
+COMMENT -> #=> 5
+IDENTIFIER -> array
+UNKNOWN -> .
+IDENTIFIER -> last 
+COMMENT -> #=> 5
+COMMENT -> # ...or with a start index and length...
+IDENTIFIER -> array
+UNKNOWN -> [
+INTEGER LITERAL -> 2
+PUNCTUATION -> , 
+INTEGER LITERAL -> 3
+PUNCTUATION -> ] 
+COMMENT -> #=> [3, 4, 5]
+COMMENT -> # ...or with a range...
+IDENTIFIER -> array
+UNKNOWN -> [
+FLOAT LITERAL -> 1.
+UNKNOWN -> .
+INTEGER LITERAL -> 3
+PUNCTUATION -> ] 
+COMMENT -> #=> [2, 3, 4]
+COMMENT -> # You can reverse an Array.
+COMMENT -> # Return a new array with reversed values
+UNKNOWN -> [
+INTEGER LITERAL -> 1
+UNKNOWN -> ,
+INTEGER LITERAL -> 2
+UNKNOWN -> ,
+INTEGER LITERAL -> 3
+PUNCTUATION -> ]
+UNKNOWN -> .
+IDENTIFIER -> reverse 
+COMMENT -> #=> [3,2,1]
+COMMENT -> # Reverse an array in place to update variable with reversed values
+IDENTIFIER -> a 
+OPERATOR -> = 
+UNKNOWN -> [
+INTEGER LITERAL -> 1
+UNKNOWN -> ,
+INTEGER LITERAL -> 2
+UNKNOWN -> ,
+INTEGER LITERAL -> 3
+PUNCTUATION -> ]
+IDENTIFIER -> a
+UNKNOWN -> .
+IDENTIFIER -> reverse
+UNKNOWN -> !
+STRING LITERAL ->  
+COMMENT -> #=> a==[3,2,1] because of the bang ('!') call to reverse
+COMMENT -> # Like arithmetic, [var] access is just syntactic sugar
+COMMENT -> # for calling a method '[]' on an object.
+IDENTIFIER -> array
+PUNCTUATION -> .
+OPERATOR -> [] 
+INTEGER LITERAL -> 0 
+COMMENT -> #=> 1
+IDENTIFIER -> array
+PUNCTUATION -> .
+OPERATOR -> [] 
+INTEGER LITERAL -> 12 
+COMMENT -> #=> nil
+COMMENT -> # You can add to an array...
+IDENTIFIER -> array 
+OPERATOR -> << 
+INTEGER LITERAL -> 6 
+COMMENT -> #=> [1, 2, 3, 4, 5, 6]
+COMMENT -> # Or like this
+IDENTIFIER -> array
+UNKNOWN -> .
+IDENTIFIER -> push
+UNKNOWN -> (
+INTEGER LITERAL -> 6
+PUNCTUATION -> ) 
+COMMENT -> #=> [1, 2, 3, 4, 5, 6]
+COMMENT -> # ...and check if an item exists in an array
+IDENTIFIER -> array
+UNKNOWN -> .
+IDENTIFIER -> include
+UNKNOWN -> ?
+UNKNOWN -> (
+INTEGER LITERAL -> 1
+PUNCTUATION -> ) 
+COMMENT -> #=> true
+COMMENT -> # Hashes are Ruby's primary dictionary with key/value pairs.
+COMMENT -> # Hashes are denoted with curly braces.
+IDENTIFIER -> hash 
+OPERATOR -> = 
+KEYWORD -> { 
+STRING LITERAL -> 'color' 
+OPERATOR -> =
+OPERATOR -> > 
+STRING LITERAL -> 'green'
+PUNCTUATION -> , 
+STRING LITERAL -> 'number' 
+OPERATOR -> =
+OPERATOR -> > 
+INTEGER LITERAL -> 5 
+KEYWORD -> }
+IDENTIFIER -> hash
+UNKNOWN -> .
+IDENTIFIER -> keys 
+COMMENT -> #=> ['color', 'number']
+COMMENT -> # Hashes can be quickly looked up by key.
+IDENTIFIER -> hash
+PUNCTUATION -> [
+STRING LITERAL -> 'color'
+PUNCTUATION -> ] 
+COMMENT -> #=> "green"
+IDENTIFIER -> hash
+PUNCTUATION -> [
+STRING LITERAL -> 'number'
+PUNCTUATION -> ] 
+COMMENT -> #=> 5
+COMMENT -> # Asking a hash for a key that doesn't exist returns nil.
+IDENTIFIER -> hash
+PUNCTUATION -> [
+STRING LITERAL -> 'nothing here'
+PUNCTUATION -> ] 
+COMMENT -> #=> nil
+COMMENT -> # When using symbols for keys in a hash, you can use an alternate syntax.
+IDENTIFIER -> hash 
+OPERATOR -> = 
+KEYWORD -> { 
+UNKNOWN -> :
+IDENTIFIER -> defcon 
+OPERATOR -> =
+OPERATOR -> > 
+INTEGER LITERAL -> 3
+PUNCTUATION -> , 
+UNKNOWN -> :
+IDENTIFIER -> action 
+OPERATOR -> =
+OPERATOR -> > 
+KEYWORD -> true 
+KEYWORD -> }
+IDENTIFIER -> hash
+UNKNOWN -> .
+IDENTIFIER -> keys 
+COMMENT -> #=> [:defcon, :action]
+IDENTIFIER -> hash 
+OPERATOR -> = 
+KEYWORD -> { 
+IDENTIFIER -> defcon
+PUNCTUATION -> : 
+INTEGER LITERAL -> 3
+PUNCTUATION -> , 
+IDENTIFIER -> action
+PUNCTUATION -> : 
+KEYWORD -> true 
+KEYWORD -> }
+IDENTIFIER -> hash
+UNKNOWN -> .
+IDENTIFIER -> keys 
+COMMENT -> #=> [:defcon, :action]
+COMMENT -> # Check existence of keys and values in hash
+IDENTIFIER -> hash
+UNKNOWN -> .
+IDENTIFIER -> key
+UNKNOWN -> ?
+PUNCTUATION -> (
+UNKNOWN -> :
+IDENTIFIER -> defcon
+PUNCTUATION -> ) 
+COMMENT -> #=> true
+IDENTIFIER -> hash
+UNKNOWN -> .
+IDENTIFIER -> value
+UNKNOWN -> ?
+UNKNOWN -> (
+INTEGER LITERAL -> 3
+PUNCTUATION -> ) 
+COMMENT -> #=> true
+COMMENT -> # Tip: Both Arrays and Hashes are Enumerable!
+COMMENT -> # They share a lot of useful methods such as each, map, count, and more.
+COMMENT -> # Control structures
+COMMENT -> # Conditionals
+KEYWORD -> if 
+KEYWORD -> true
+STRING LITERAL ->   
+STRING LITERAL -> 'if statement'
+KEYWORD -> elsif 
+KEYWORD -> false
+STRING LITERAL ->   
+STRING LITERAL -> 'else if, optional'
+KEYWORD -> else
+STRING LITERAL ->   
+STRING LITERAL -> 'else, also optional'
+KEYWORD -> end
+COMMENT -> # If a condition controls invocation of a single statement rather than a block of code
+COMMENT -> # you can use postfix-if notation
+IDENTIFIER -> warnings 
+OPERATOR -> = 
+PUNCTUATION -> [
+STRING LITERAL -> 'Patronimic is missing'
+PUNCTUATION -> , 
+STRING LITERAL -> 'Address too short'
+PUNCTUATION -> ]
+IDENTIFIER -> puts
+PUNCTUATION -> (
+STRING LITERAL -> "Some warnings occurred:\n" 
+OPERATOR -> + 
+IDENTIFIER -> warnings
+UNKNOWN -> .
+IDENTIFIER -> join
+PUNCTUATION -> (
+STRING LITERAL -> "\n"
+PUNCTUATION -> )
+PUNCTUATION -> )  
+KEYWORD -> if 
+UNKNOWN -> !
+IDENTIFIER -> warnings
+UNKNOWN -> .
+IDENTIFIER -> empty
+UNKNOWN -> ?
+COMMENT -> # Rephrase condition if `unless` sounds better than `if`
+IDENTIFIER -> puts
+PUNCTUATION -> (
+STRING LITERAL -> "Some warnings occurred:\n" 
+OPERATOR -> + 
+IDENTIFIER -> warnings
+UNKNOWN -> .
+IDENTIFIER -> join
+PUNCTUATION -> (
+STRING LITERAL -> "\n"
+PUNCTUATION -> )
+PUNCTUATION -> )  
+KEYWORD -> unless 
+IDENTIFIER -> warnings
+UNKNOWN -> .
+IDENTIFIER -> empty
+UNKNOWN -> ?
+COMMENT -> # Loops
+COMMENT -> # In Ruby, traditional `for` loops aren't very common. Instead, these 
+COMMENT -> # basic loops are implemented using enumerable, which hinges on `each`.
+UNKNOWN -> (
+FLOAT LITERAL -> 1.
+UNKNOWN -> .
+INTEGER LITERAL -> 5
+PUNCTUATION -> )
+UNKNOWN -> .
+IDENTIFIER -> each 
+KEYWORD -> do 
+OPERATOR -> |
+IDENTIFIER -> counter
+OPERATOR -> |
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "iteration #{
+IDENTIFIER -> counter
+STRING LITERAL -> }"
+KEYWORD -> end
+COMMENT -> # Which is roughly equivalent to the following, which is unusual to see in Ruby.
+IDENTIFIER -> for 
+IDENTIFIER -> counter 
+IDENTIFIER -> in 
+FLOAT LITERAL -> 1.
+UNKNOWN -> .
+INTEGER LITERAL -> 5
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "iteration #{
+IDENTIFIER -> counter
+STRING LITERAL -> }"
+KEYWORD -> end
+COMMENT -> # The `do |variable| ... end` construct above is called a 'block'. Blocks are similar
+COMMENT -> # to lambdas, anonymous functions or closures in other programming languages. They can
+COMMENT -> # be passed around as objects, called, or attached as methods.
+COMMENT -> #
+COMMENT -> # The 'each' method of a range runs the block once for each element of the range.
+COMMENT -> # The block is passed a counter as a parameter.
+COMMENT -> # You can also surround blocks in curly brackets.
+UNKNOWN -> (
+FLOAT LITERAL -> 1.
+UNKNOWN -> .
+INTEGER LITERAL -> 5
+PUNCTUATION -> )
+UNKNOWN -> .
+IDENTIFIER -> each 
+KEYWORD -> { 
+OPERATOR -> |
+IDENTIFIER -> counter
+OPERATOR -> | 
+IDENTIFIER -> puts 
+STRING LITERAL -> "iteration #{
+IDENTIFIER -> counter
+STRING LITERAL -> }" 
+KEYWORD -> }
+COMMENT -> # The contents of data structures can also be iterated using each.
+IDENTIFIER -> array
+UNKNOWN -> .
+IDENTIFIER -> each 
+KEYWORD -> do 
+OPERATOR -> |
+IDENTIFIER -> element
+OPERATOR -> |
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "#{
+IDENTIFIER -> element
+STRING LITERAL -> } is part of the array"
+KEYWORD -> end
+IDENTIFIER -> hash
+UNKNOWN -> .
+IDENTIFIER -> each 
+KEYWORD -> do 
+OPERATOR -> |
+IDENTIFIER -> key
+PUNCTUATION -> , 
+IDENTIFIER -> value
+OPERATOR -> |
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "#{
+IDENTIFIER -> key
+STRING LITERAL -> } is #{
+IDENTIFIER -> value
+STRING LITERAL -> }"
+KEYWORD -> end
+COMMENT -> # If you still need an index you can use 'each_with_index' and define an index
+COMMENT -> # variable.
+IDENTIFIER -> array
+UNKNOWN -> .
+IDENTIFIER -> each_with_index 
+KEYWORD -> do 
+OPERATOR -> |
+IDENTIFIER -> element
+PUNCTUATION -> , 
+IDENTIFIER -> index
+OPERATOR -> |
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "#{
+IDENTIFIER -> element
+STRING LITERAL -> } is number #{
+IDENTIFIER -> index
+STRING LITERAL -> } in the array"
+KEYWORD -> end
+IDENTIFIER -> counter 
+OPERATOR -> = 
+INTEGER LITERAL -> 1
+IDENTIFIER -> while 
+IDENTIFIER -> counter 
+OPERATOR -> <= 
+INTEGER LITERAL -> 5 
+KEYWORD -> do
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "iteration #{
+IDENTIFIER -> counter
+STRING LITERAL -> }"
+STRING LITERAL ->   
+IDENTIFIER -> counter 
+OPERATOR -> += 
+INTEGER LITERAL -> 1
+KEYWORD -> end
+COMMENT -> #=> iteration 1
+COMMENT -> #=> iteration 2
+COMMENT -> #=> iteration 3
+COMMENT -> #=> iteration 4
+COMMENT -> #=> iteration 5
+COMMENT -> # There are a bunch of other helpful looping functions in Ruby.
+COMMENT -> # For example: 'map', 'reduce', 'inject', the list goes on.
+COMMENT -> # Map, for instance, takes the array it's looping over, does something
+COMMENT -> # to it as defined in your block, and returns an entirely new array.
+IDENTIFIER -> array 
+OPERATOR -> = 
+UNKNOWN -> [
+INTEGER LITERAL -> 1
+UNKNOWN -> ,
+INTEGER LITERAL -> 2
+UNKNOWN -> ,
+INTEGER LITERAL -> 3
+UNKNOWN -> ,
+INTEGER LITERAL -> 4
+UNKNOWN -> ,
+INTEGER LITERAL -> 5
+PUNCTUATION -> ]
+IDENTIFIER -> doubled 
+OPERATOR -> = 
+IDENTIFIER -> array
+UNKNOWN -> .
+IDENTIFIER -> map 
+KEYWORD -> do 
+OPERATOR -> |
+IDENTIFIER -> element
+OPERATOR -> |
+STRING LITERAL ->   
+IDENTIFIER -> element 
+OPERATOR -> * 
+INTEGER LITERAL -> 2
+KEYWORD -> end
+IDENTIFIER -> puts 
+IDENTIFIER -> doubled
+COMMENT -> #=> [2,4,6,8,10]
+IDENTIFIER -> puts 
+IDENTIFIER -> array
+COMMENT -> #=> [1,2,3,4,5]
+COMMENT -> # Case construct
+IDENTIFIER -> grade 
+OPERATOR -> = 
+STRING LITERAL -> 'B'
+KEYWORD -> case 
+IDENTIFIER -> grade
+KEYWORD -> when 
+STRING LITERAL -> 'A'
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'Way to go kiddo'
+KEYWORD -> when 
+STRING LITERAL -> 'B'
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'Better luck next time'
+KEYWORD -> when 
+STRING LITERAL -> 'C'
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'You can do better'
+KEYWORD -> when 
+STRING LITERAL -> 'D'
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'Scraping through'
+KEYWORD -> when 
+STRING LITERAL -> 'F'
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'You failed!'
+KEYWORD -> else
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'Alternative grading system, eh?'
+KEYWORD -> end
+COMMENT -> #=> "Better luck next time"
+COMMENT -> # Cases can also use ranges
+IDENTIFIER -> grade 
+OPERATOR -> = 
+INTEGER LITERAL -> 82
+KEYWORD -> case 
+IDENTIFIER -> grade
+KEYWORD -> when 
+FLOAT LITERAL -> 90.
+UNKNOWN -> .
+INTEGER LITERAL -> 100
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'Hooray!'
+KEYWORD -> when 
+FLOAT LITERAL -> 80.
+PUNCTUATION -> .
+UNKNOWN -> .
+INTEGER LITERAL -> 90
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'OK job'
+KEYWORD -> else
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'You failed!'
+KEYWORD -> end
+COMMENT -> #=> "OK job"
+COMMENT -> # Exception handling
+KEYWORD -> begin
+STRING LITERAL ->   
+COMMENT -> # Code here that might raise an exception
+STRING LITERAL ->   
+IDENTIFIER -> raise 
+IDENTIFIER -> NoMemoryError
+PUNCTUATION -> , 
+STRING LITERAL -> 'You ran out of memory.'
+IDENTIFIER -> rescue 
+IDENTIFIER -> NoMemoryError 
+OPERATOR -> =
+OPERATOR -> > 
+IDENTIFIER -> exception_variable
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'NoMemoryError was raised'
+PUNCTUATION -> , 
+IDENTIFIER -> exception_variable
+IDENTIFIER -> rescue 
+IDENTIFIER -> RuntimeError 
+OPERATOR -> =
+OPERATOR -> > 
+IDENTIFIER -> other_exception_variable
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'RuntimeError was raised now'
+KEYWORD -> else
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'This runs if no exceptions were thrown at all'
+KEYWORD -> ensure
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> 'This code always runs no matter what'
+KEYWORD -> end
+COMMENT -> # Methods
+KEYWORD -> def 
+IDENTIFIER -> double
+UNKNOWN -> (
+IDENTIFIER -> x
+PUNCTUATION -> )
+STRING LITERAL ->   
+IDENTIFIER -> x 
+OPERATOR -> * 
+INTEGER LITERAL -> 2
+KEYWORD -> end
+COMMENT -> # Methods (and blocks) implicitly return the value of the last statement.
+IDENTIFIER -> double
+UNKNOWN -> (
+INTEGER LITERAL -> 2
+PUNCTUATION -> ) 
+COMMENT -> #=> 4
+COMMENT -> # Parentheses are optional where the interpretation is unambiguous.
+IDENTIFIER -> double 
+INTEGER LITERAL -> 3 
+COMMENT -> #=> 6
+IDENTIFIER -> double 
+IDENTIFIER -> double 
+INTEGER LITERAL -> 3 
+COMMENT -> #=> 12
+KEYWORD -> def 
+IDENTIFIER -> sum
+UNKNOWN -> (
+IDENTIFIER -> x
+PUNCTUATION -> , 
+IDENTIFIER -> y
+PUNCTUATION -> )
+STRING LITERAL ->   
+IDENTIFIER -> x 
+OPERATOR -> + 
+IDENTIFIER -> y
+KEYWORD -> end
+COMMENT -> # Method arguments are separated by a comma.
+IDENTIFIER -> sum 
+INTEGER LITERAL -> 3
+PUNCTUATION -> , 
+INTEGER LITERAL -> 4 
+COMMENT -> #=> 7
+IDENTIFIER -> sum 
+IDENTIFIER -> sum
+UNKNOWN -> (
+INTEGER LITERAL -> 3
+PUNCTUATION -> , 
+INTEGER LITERAL -> 4
+PUNCTUATION -> )
+PUNCTUATION -> , 
+INTEGER LITERAL -> 5 
+COMMENT -> #=> 12
+COMMENT -> # yield
+COMMENT -> # All methods have an implicit, optional block parameter.
+COMMENT -> # It can be called with the 'yield' keyword.
+KEYWORD -> def 
+IDENTIFIER -> surround
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> '{'
+STRING LITERAL ->   
+KEYWORD -> yield
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> '}'
+KEYWORD -> end
+IDENTIFIER -> surround 
+KEYWORD -> { 
+IDENTIFIER -> puts 
+STRING LITERAL -> 'hello world' 
+KEYWORD -> }
+COMMENT -> #=> {
+COMMENT -> #=> hello world
+COMMENT -> #=> }
+COMMENT -> # Blocks can be converted into a 'proc' object, which wraps the block 
+COMMENT -> # and allows it to be passed to another method, bound to a different scope,
+COMMENT -> # or manipulated otherwise. This is most common in method parameter lists,
+COMMENT -> # where you frequently see a trailing '&block' parameter that will accept 
+COMMENT -> # the block, if one is given, and convert it to a 'Proc'. The naming here is
+COMMENT -> # convention; it would work just as well with '&pineapple'.
+KEYWORD -> def 
+IDENTIFIER -> guests
+PUNCTUATION -> (
+OPERATOR -> &
+IDENTIFIER -> block
+PUNCTUATION -> )
+STRING LITERAL ->   
+IDENTIFIER -> block
+UNKNOWN -> .
+IDENTIFIER -> class 
+COMMENT -> #=> Proc
+STRING LITERAL ->   
+IDENTIFIER -> block
+UNKNOWN -> .
+IDENTIFIER -> call
+UNKNOWN -> (
+INTEGER LITERAL -> 4
+PUNCTUATION -> )
+KEYWORD -> end
+COMMENT -> # The 'call' method on the Proc is similar to calling 'yield' when a block is 
+COMMENT -> # present. The arguments passed to 'call' will be forwarded to the block as arguments.
+IDENTIFIER -> guests 
+KEYWORD -> { 
+OPERATOR -> |
+IDENTIFIER -> n
+OPERATOR -> | 
+STRING LITERAL -> "You have #{
+IDENTIFIER -> n
+STRING LITERAL -> } guests." 
+KEYWORD -> }
+COMMENT -> # => "You have 4 guests."
+COMMENT -> # You can pass a list of arguments, which will be converted into an array.
+COMMENT -> # That's what splat operator ("*") is for.
+KEYWORD -> def 
+IDENTIFIER -> guests
+PUNCTUATION -> (
+OPERATOR -> *
+IDENTIFIER -> array
+PUNCTUATION -> )
+STRING LITERAL ->   
+IDENTIFIER -> array
+UNKNOWN -> .
+IDENTIFIER -> each 
+KEYWORD -> { 
+OPERATOR -> |
+IDENTIFIER -> guest
+OPERATOR -> | 
+IDENTIFIER -> puts 
+IDENTIFIER -> guest 
+KEYWORD -> }
+KEYWORD -> end
+COMMENT -> # Destructuring
+COMMENT -> # Ruby will automatically destructure arrays on assignment to multiple variables.
+IDENTIFIER -> a
+PUNCTUATION -> , 
+IDENTIFIER -> b
+PUNCTUATION -> , 
+IDENTIFIER -> c 
+OPERATOR -> = 
+UNKNOWN -> [
+INTEGER LITERAL -> 1
+PUNCTUATION -> , 
+INTEGER LITERAL -> 2
+PUNCTUATION -> , 
+INTEGER LITERAL -> 3
+PUNCTUATION -> ]
+IDENTIFIER -> a 
+COMMENT -> #=> 1
+IDENTIFIER -> b 
+COMMENT -> #=> 2
+IDENTIFIER -> c 
+COMMENT -> #=> 3
+COMMENT -> # In some cases, you will want to use the splat operator: `*` to prompt destructuring
+COMMENT -> # of an array into a list.
+IDENTIFIER -> ranked_competitors 
+OPERATOR -> = 
+PUNCTUATION -> [
+STRING LITERAL -> "John"
+PUNCTUATION -> , 
+STRING LITERAL -> "Sally"
+PUNCTUATION -> , 
+STRING LITERAL -> "Dingus"
+PUNCTUATION -> , 
+STRING LITERAL -> "Moe"
+PUNCTUATION -> , 
+STRING LITERAL -> "Marcy"
+PUNCTUATION -> ]
+KEYWORD -> def 
+IDENTIFIER -> best
+UNKNOWN -> (
+IDENTIFIER -> first
+PUNCTUATION -> , 
+IDENTIFIER -> second
+PUNCTUATION -> , 
+IDENTIFIER -> third
+PUNCTUATION -> )
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "Winners are #{
+IDENTIFIER -> first
+STRING LITERAL -> }, #{
+IDENTIFIER -> second
+STRING LITERAL -> }, and #{
+IDENTIFIER -> third
+STRING LITERAL -> }."
+KEYWORD -> end
+IDENTIFIER -> best 
+OPERATOR -> *
+IDENTIFIER -> ranked_competitors
+UNKNOWN -> .
+IDENTIFIER -> first
+UNKNOWN -> (
+INTEGER LITERAL -> 3
+PUNCTUATION -> ) 
+COMMENT -> #=> Winners are John, Sally, and Dingus.
+COMMENT -> # The splat operator can also be used in parameters.
+KEYWORD -> def 
+IDENTIFIER -> best
+UNKNOWN -> (
+IDENTIFIER -> first
+PUNCTUATION -> , 
+IDENTIFIER -> second
+PUNCTUATION -> , 
+IDENTIFIER -> third
+PUNCTUATION -> , 
+OPERATOR -> *
+IDENTIFIER -> others
+PUNCTUATION -> )
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "Winners are #{
+IDENTIFIER -> first
+STRING LITERAL -> }, #{
+IDENTIFIER -> second
+STRING LITERAL -> }, and #{
+IDENTIFIER -> third
+STRING LITERAL -> }."
+STRING LITERAL ->   
+IDENTIFIER -> puts 
+STRING LITERAL -> "There were #{
+IDENTIFIER -> others
+UNKNOWN -> .
+IDENTIFIER -> count
+STRING LITERAL -> } other participants."
+KEYWORD -> end
+IDENTIFIER -> best 
+OPERATOR -> *
+IDENTIFIER -> ranked_competitors 
+COMMENT -> #=> Winners are John, Sally, and Dingus.
+COMMENT -> #=> There were 2 other participants.
+COMMENT -> # By convention, all methods that return booleans end with a question mark.
+INTEGER LITERAL -> 5
+UNKNOWN -> .
+IDENTIFIER -> even
+UNKNOWN -> ?
+STRING LITERAL ->  
+COMMENT -> #=> false
+INTEGER LITERAL -> 5
+UNKNOWN -> .
+IDENTIFIER -> odd
+UNKNOWN -> ?
+STRING LITERAL ->  
+COMMENT -> #=> true
+COMMENT -> # By convention, if a method name ends with an exclamation mark, it does something destructive
+COMMENT -> # like mutate the receiver. Many methods have a ! version to make a change, and
+COMMENT -> # a non-! version to just return a new changed version.
+IDENTIFIER -> company_name 
+OPERATOR -> = 
+STRING LITERAL -> "Dunder Mifflin"
+IDENTIFIER -> company_name
+UNKNOWN -> .
+IDENTIFIER -> upcase 
+COMMENT -> #=> "DUNDER MIFFLIN"
+IDENTIFIER -> company_name 
+COMMENT -> #=> "Dunder Mifflin"
+COMMENT -> # We're mutating company_name this time.
+IDENTIFIER -> company_name
+UNKNOWN -> .
+IDENTIFIER -> upcase
+UNKNOWN -> !
+STRING LITERAL ->  
+COMMENT -> #=> "DUNDER MIFFLIN"
+IDENTIFIER -> company_name 
+COMMENT -> #=> "DUNDER MIFFLIN"
+COMMENT -> # Classes
+COMMENT -> # You can define a class with the 'class' keyword.
+IDENTIFIER -> class 
+IDENTIFIER -> Human
+STRING LITERAL ->   
+COMMENT -> # A class variable. It is shared by all instances of this class.
+STRING LITERAL ->   
+UNKNOWN -> @
+UNKNOWN -> @
+IDENTIFIER -> species 
+OPERATOR -> = 
+STRING LITERAL -> 'H. sapiens'
+STRING LITERAL ->   
+COMMENT -> # Basic initializer
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> initialize
+UNKNOWN -> (
+IDENTIFIER -> name
+PUNCTUATION -> , 
+IDENTIFIER -> age 
+OPERATOR -> = 
+INTEGER LITERAL -> 0
+PUNCTUATION -> )
+STRING LITERAL ->     
+COMMENT -> # Assign the argument to the 'name' instance variable for the instance.
+STRING LITERAL ->     
+UNKNOWN -> @
+IDENTIFIER -> name 
+OPERATOR -> = 
+IDENTIFIER -> name
+STRING LITERAL ->     
+COMMENT -> # If no age given, we will fall back to the default in the arguments list.
+STRING LITERAL ->     
+UNKNOWN -> @
+IDENTIFIER -> age 
+OPERATOR -> = 
+IDENTIFIER -> age
+STRING LITERAL ->   
+KEYWORD -> end
+STRING LITERAL ->   
+COMMENT -> # Basic setter method
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> name
+OPERATOR -> =
+UNKNOWN -> (
+IDENTIFIER -> name
+PUNCTUATION -> )
+STRING LITERAL ->     
+UNKNOWN -> @
+IDENTIFIER -> name 
+OPERATOR -> = 
+IDENTIFIER -> name
+STRING LITERAL ->   
+KEYWORD -> end
+STRING LITERAL ->   
+COMMENT -> # Basic getter method
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> name
+STRING LITERAL ->     
+UNKNOWN -> @
+IDENTIFIER -> name
+STRING LITERAL ->   
+KEYWORD -> end
+STRING LITERAL ->   
+COMMENT -> # The above functionality can be encapsulated using the attr_accessor method as follows.
+STRING LITERAL ->   
+IDENTIFIER -> attr_accessor 
+UNKNOWN -> :
+IDENTIFIER -> name
+STRING LITERAL ->   
+COMMENT -> # Getter/setter methods can also be created individually like this.
+STRING LITERAL ->   
+IDENTIFIER -> attr_reader 
+UNKNOWN -> :
+IDENTIFIER -> name
+STRING LITERAL ->   
+IDENTIFIER -> attr_writer 
+UNKNOWN -> :
+IDENTIFIER -> name
+STRING LITERAL ->   
+COMMENT -> # A class method uses self to distinguish from instance methods.
+STRING LITERAL ->   
+COMMENT -> # It can only be called on the class, not an instance.
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> self
+UNKNOWN -> .
+IDENTIFIER -> say
+UNKNOWN -> (
+IDENTIFIER -> msg
+PUNCTUATION -> )
+STRING LITERAL ->     
+IDENTIFIER -> puts 
+IDENTIFIER -> msg
+STRING LITERAL ->   
+KEYWORD -> end
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> species
+STRING LITERAL ->     
+UNKNOWN -> @
+UNKNOWN -> @
+IDENTIFIER -> species
+STRING LITERAL ->   
+KEYWORD -> end
+KEYWORD -> end
+COMMENT -> # Instantiating of a class
+IDENTIFIER -> jim 
+OPERATOR -> = 
+IDENTIFIER -> Human
+UNKNOWN -> .
+IDENTIFIER -> new
+PUNCTUATION -> (
+STRING LITERAL -> 'Jim Halpert'
+PUNCTUATION -> )
+IDENTIFIER -> dwight 
+OPERATOR -> = 
+IDENTIFIER -> Human
+UNKNOWN -> .
+IDENTIFIER -> new
+PUNCTUATION -> (
+STRING LITERAL -> 'Dwight K. Schrute'
+PUNCTUATION -> )
+COMMENT -> # You can call the methods of the generated object.
+IDENTIFIER -> jim
+UNKNOWN -> .
+IDENTIFIER -> species 
+COMMENT -> #=> "H. sapiens"
+IDENTIFIER -> jim
+UNKNOWN -> .
+IDENTIFIER -> name 
+COMMENT -> #=> "Jim Halpert"
+IDENTIFIER -> jim
+UNKNOWN -> .
+IDENTIFIER -> name 
+OPERATOR -> = 
+STRING LITERAL -> "Jim Halpert II" 
+COMMENT -> #=> "Jim Halpert II"
+IDENTIFIER -> jim
+UNKNOWN -> .
+IDENTIFIER -> name 
+COMMENT -> #=> "Jim Halpert II"
+IDENTIFIER -> dwight
+UNKNOWN -> .
+IDENTIFIER -> species 
+COMMENT -> #=> "H. sapiens"
+IDENTIFIER -> dwight
+UNKNOWN -> .
+IDENTIFIER -> name 
+COMMENT -> #=> "Dwight K. Schrute"
+COMMENT -> # Calling of a class method
+IDENTIFIER -> Human
+UNKNOWN -> .
+IDENTIFIER -> say
+PUNCTUATION -> (
+STRING LITERAL -> 'Hi'
+PUNCTUATION -> ) 
+COMMENT -> #=> "Hi"
+COMMENT -> # Variable's scopes are defined by the way we name them.
+COMMENT -> # Variables that start with $ have global scope.
+UNKNOWN -> $
+IDENTIFIER -> var 
+OPERATOR -> = 
+STRING LITERAL -> "I'm a global var"
+KEYWORD -> defined? 
+UNKNOWN -> $
+IDENTIFIER -> var 
+COMMENT -> #=> "global-variable"
+COMMENT -> # Variables that start with @ have instance scope.
+UNKNOWN -> @
+IDENTIFIER -> var 
+OPERATOR -> = 
+STRING LITERAL -> "I'm an instance var"
+KEYWORD -> defined? 
+UNKNOWN -> @
+IDENTIFIER -> var 
+COMMENT -> #=> "instance-variable"
+COMMENT -> # Variables that start with @@ have class scope.
+UNKNOWN -> @
+UNKNOWN -> @
+IDENTIFIER -> var 
+OPERATOR -> = 
+STRING LITERAL -> "I'm a class var"
+KEYWORD -> defined? 
+UNKNOWN -> @
+UNKNOWN -> @
+IDENTIFIER -> var 
+COMMENT -> #=> "class variable"
+COMMENT -> # Variables that start with a capital letter are constants.
+IDENTIFIER -> Var 
+OPERATOR -> = 
+STRING LITERAL -> "I'm a constant"
+KEYWORD -> defined? 
+IDENTIFIER -> Var 
+COMMENT -> #=> "constant"
+COMMENT -> # Class is also an object in ruby. So a class can have instance variables.
+COMMENT -> # A class variable is shared among the class and all of its descendants.
+COMMENT -> # Base class
+IDENTIFIER -> class 
+IDENTIFIER -> Human
+STRING LITERAL ->   
+UNKNOWN -> @
+UNKNOWN -> @
+IDENTIFIER -> foo 
+OPERATOR -> = 
+INTEGER LITERAL -> 0
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> self
+UNKNOWN -> .
+IDENTIFIER -> foo
+STRING LITERAL ->     
+UNKNOWN -> @
+UNKNOWN -> @
+IDENTIFIER -> foo
+STRING LITERAL ->   
+KEYWORD -> end
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> self
+UNKNOWN -> .
+IDENTIFIER -> foo
+OPERATOR -> =
+UNKNOWN -> (
+IDENTIFIER -> value
+PUNCTUATION -> )
+STRING LITERAL ->     
+UNKNOWN -> @
+UNKNOWN -> @
+IDENTIFIER -> foo 
+OPERATOR -> = 
+IDENTIFIER -> value
+STRING LITERAL ->   
+KEYWORD -> end
+KEYWORD -> end
+COMMENT -> # Derived class
+IDENTIFIER -> class 
+IDENTIFIER -> Worker 
+OPERATOR -> < 
+IDENTIFIER -> Human
+KEYWORD -> end
+IDENTIFIER -> Human
+UNKNOWN -> .
+IDENTIFIER -> foo 
+COMMENT -> #=> 0
+IDENTIFIER -> Worker
+UNKNOWN -> .
+IDENTIFIER -> foo 
+COMMENT -> #=> 0
+IDENTIFIER -> Human
+UNKNOWN -> .
+IDENTIFIER -> foo 
+OPERATOR -> = 
+INTEGER LITERAL -> 2
+IDENTIFIER -> Worker
+UNKNOWN -> .
+IDENTIFIER -> foo 
+COMMENT -> #=> 2
+COMMENT -> # A class instance variable is not shared by the class's descendants.
+IDENTIFIER -> class 
+IDENTIFIER -> Human
+STRING LITERAL ->   
+UNKNOWN -> @
+IDENTIFIER -> bar 
+OPERATOR -> = 
+INTEGER LITERAL -> 0
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> self
+UNKNOWN -> .
+IDENTIFIER -> bar
+STRING LITERAL ->     
+UNKNOWN -> @
+IDENTIFIER -> bar
+STRING LITERAL ->   
+KEYWORD -> end
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> self
+UNKNOWN -> .
+IDENTIFIER -> bar
+OPERATOR -> =
+UNKNOWN -> (
+IDENTIFIER -> value
+PUNCTUATION -> )
+STRING LITERAL ->     
+UNKNOWN -> @
+IDENTIFIER -> bar 
+OPERATOR -> = 
+IDENTIFIER -> value
+STRING LITERAL ->   
+KEYWORD -> end
+KEYWORD -> end
+IDENTIFIER -> class 
+IDENTIFIER -> Doctor 
+OPERATOR -> < 
+IDENTIFIER -> Human
+KEYWORD -> end
+IDENTIFIER -> Human
+UNKNOWN -> .
+IDENTIFIER -> bar 
+COMMENT -> #=> 0
+IDENTIFIER -> Doctor
+UNKNOWN -> .
+IDENTIFIER -> bar 
+COMMENT -> #=> nil
+IDENTIFIER -> module 
+IDENTIFIER -> ModuleExample
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> foo
+STRING LITERAL ->     
+STRING LITERAL -> 'foo'
+STRING LITERAL ->   
+KEYWORD -> end
+KEYWORD -> end
+COMMENT -> # Including modules binds their methods to the class instances.
+COMMENT -> # Extending modules binds their methods to the class itself.
+IDENTIFIER -> class 
+IDENTIFIER -> Person
+STRING LITERAL ->   
+IDENTIFIER -> include 
+IDENTIFIER -> ModuleExample
+KEYWORD -> end
+IDENTIFIER -> class 
+IDENTIFIER -> Book
+STRING LITERAL ->   
+IDENTIFIER -> extend 
+IDENTIFIER -> ModuleExample
+KEYWORD -> end
+IDENTIFIER -> Person
+UNKNOWN -> .
+IDENTIFIER -> foo     
+COMMENT -> #=> NoMethodError: undefined method `foo' for Person:Class
+IDENTIFIER -> Person
+UNKNOWN -> .
+IDENTIFIER -> new
+UNKNOWN -> .
+IDENTIFIER -> foo 
+COMMENT -> #=> "foo"
+IDENTIFIER -> Book
+UNKNOWN -> .
+IDENTIFIER -> foo       
+COMMENT -> #=> "foo"
+IDENTIFIER -> Book
+UNKNOWN -> .
+IDENTIFIER -> new
+UNKNOWN -> .
+IDENTIFIER -> foo   
+COMMENT -> #=> NoMethodError: undefined method `foo'
+COMMENT -> # Callbacks are executed when including and extending a module
+IDENTIFIER -> module 
+IDENTIFIER -> ConcernExample
+STRING LITERAL ->   
+KEYWORD -> def 
+IDENTIFIER -> self
+UNKNOWN -> .
+IDENTIFIER -> included
+UNKNOWN -> (
+IDENTIFIER -> base
+PUNCTUATION -> )
+STRING LITERAL ->     
+IDENTIFIER -> base
+UNKNOWN -> .
+IDENTIFIER -> extend
+PUNCTUATION -> (
+IDENTIFIER -> ClassMethods
+PUNCTUATION -> )
+STRING LITERAL ->     
+IDENTIFIER -> base
+UNKNOWN -> .
+IDENTIFIER -> send
+PUNCTUATION -> (
+UNKNOWN -> :
+IDENTIFIER -> include
+PUNCTUATION -> , 
+IDENTIFIER -> InstanceMethods
+PUNCTUATION -> )
+STRING LITERAL ->   
+KEYWORD -> end
+STRING LITERAL ->   
+IDENTIFIER -> module 
+IDENTIFIER -> ClassMethods
+STRING LITERAL ->     
+KEYWORD -> def 
+IDENTIFIER -> bar
+STRING LITERAL ->       
+STRING LITERAL -> 'bar'
+STRING LITERAL ->     
+KEYWORD -> end
+STRING LITERAL ->   
+KEYWORD -> end
+STRING LITERAL ->   
+IDENTIFIER -> module 
+IDENTIFIER -> InstanceMethods
+STRING LITERAL ->     
+KEYWORD -> def 
+IDENTIFIER -> qux
+STRING LITERAL ->       
+STRING LITERAL -> 'qux'
+STRING LITERAL ->     
+KEYWORD -> end
+STRING LITERAL ->   
+KEYWORD -> end
+KEYWORD -> end
+IDENTIFIER -> class 
+IDENTIFIER -> Something
+STRING LITERAL ->   
+IDENTIFIER -> include 
+IDENTIFIER -> ConcernExample
+KEYWORD -> end

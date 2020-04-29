@@ -1,1 +1,2 @@
-﻿LINK : fatal error LNK1168: cannot open C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\Debug\Lexer.exe for writing
+﻿  Lexer.vcxproj -> C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\Debug\Lexer.exe
+  Lexer.vcxproj -> C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\Debug\Lexer.pdb (Partial PDB)

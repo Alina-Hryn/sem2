@@ -1,7 +1,2 @@
-﻿  Source.cpp
-c:\users\alina\documents\visual studio 2017\projects\lexer\lexer\source.cpp(162): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-c:\users\alina\documents\visual studio 2017\projects\lexer\lexer\source.cpp(165): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-c:\users\alina\documents\visual studio 2017\projects\lexer\lexer\source.cpp(169): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-c:\users\alina\documents\visual studio 2017\projects\lexer\lexer\source.cpp(171): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Lexer.vcxproj -> C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\x64\Debug\Lexer.exe
+﻿  Lexer.vcxproj -> C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\x64\Debug\Lexer.exe
   Lexer.vcxproj -> C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\x64\Debug\Lexer.pdb (Partial PDB)

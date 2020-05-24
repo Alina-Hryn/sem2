@@ -1,2 +1,6 @@
-﻿  Lexer.vcxproj -> C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\Debug\Lexer.exe
+﻿  Source.cpp
+c:\users\alina\documents\visual studio 2017\projects\lexer\lexer\source.cpp(15): warning C4838: conversion from 'int' to 'char' requires a narrowing conversion
+c:\users\alina\documents\visual studio 2017\projects\lexer\lexer\source.cpp(15): warning C4305: 'initializing': truncation from 'int' to 'char'
+c:\users\alina\documents\visual studio 2017\projects\lexer\lexer\source.cpp(15): warning C4309: 'initializing': truncation of constant value
+  Lexer.vcxproj -> C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\Debug\Lexer.exe
   Lexer.vcxproj -> C:\Users\Alina\Documents\Visual Studio 2017\Projects\Lexer\Debug\Lexer.pdb (Partial PDB)

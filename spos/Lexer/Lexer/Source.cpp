@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <fstream>
 #include <windows.h>
+#include <string>
 using namespace std;
 
 /* INPUT_LIN_TAM: max number of symbols in line
@@ -9,35 +10,40 @@ using namespace std;
 #define INPUT_LIN_TAM 1000
 #define MAX_TABLE_LEN 20
 
-char keywords[][MAX_TABLE_LEN] = { "alias", "{", "}", "defined?", "do", "then", "if", "elsif", "else", "unless", "case",
-"when", "until", "ensure", "return", "yield", "begin", "end", "def", "undef","and", "not", "or", "true", "false", "nil","for" "while", "\0" };
-char ruby_method_op[][MAX_TABLE_LEN] = { ".", "::", "super", "\0" };
-char ruby_func_op[][MAX_TABLE_LEN] = { "(", ")", "\0", };
-char ruby_term_stmt_op[][MAX_TABLE_LEN] = { ";", "\n", "\0" };
-char ruby_global_id[][MAX_TABLE_LEN] = { "$",  "\0" };
-char ruby_op_id[][MAX_TABLE_LEN] = { "!", "?", "\0" };
-char ruby_var_id[][MAX_TABLE_LEN] = { "@@", "@", "\0" };
-char ruby_sep_op[][MAX_TABLE_LEN] = { ",", "\0" };
 char ruby_comment_begin[][MAX_TABLE_LEN] = { "=begin", "\0" };
 char ruby_comment_end[][MAX_TABLE_LEN] = { "=end", "\0" };
-char ruby_print_op[][MAX_TABLE_LEN] = { "puts", "print", "\0" };
-char ruby_class_op[][MAX_TABLE_LEN] = { "class", "\0" };
-char ruby_list_op[][MAX_TABLE_LEN] = { "[", "]", "\0" };
-char punctuation[][MAX_TABLE_LEN] = { "[", "]","(", ")", ",", ";",":", ".","\0" };
+char punctuation_[] = { '[', ']','(', ')', ',', ';','::', ':', '.', '?','{', '}', '\0' };
+char keywords[50][MAX_TABLE_LEN] = {};
 
 // global vars to check if comments/strings are closed correct
 bool global_comment_open = false;
 bool global_string_open = false;
 bool open_for_variable = false;
 
-/*TOKENS NAMES :
-->Array that contains the names of the tokens
-->Each token name corresponds to one of the categories listed in the arrays
- stated above
-*/
-char ruby_table[][MAX_TABLE_LEN] = { "UNKNOWN", "OPERATOR", "KEYWORD", "STRING LITERAL", "INTEGER LITERAL",
-"FLOAT LITERAL", "IDENTIFIER", "COMMENT", "PUNCTUATION", "PRINT_OP" };
-int color_table[] = { 12, 14, 9, 13, 9, 11, 7, 10, 7, 12 };
+
+char token_table[][MAX_TABLE_LEN] = { "UNKNOWN", "OPERATOR", "KEYWORD", "STRING LITERAL", "INTEGER LITERAL",
+"FLOAT LITERAL", "IDENTIFIER", "COMMENT", "PUNCTUATION" };
+int token_color_table[] = { 12, 14, 8, 13, 9, 11, 7, 10, 3 };
+class Token {
+private:
+	string token_name;
+	int token_type;
+	int color;
+public:
+	Token() {
+		this->token_name = "";
+	}
+	void add(string name, int token_type) {
+		this->token_name = name;
+		this->token_type = token_type;
+		this->color = token_color_table[this->token_type];
+	}
+	void get_token() {
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole, color);
+		cout << this->token_name;
+	}
+};
 // declaration of methods
 void flush_input_lin(char* input_lin, int tam);
 int check_if_keyword(char* lex, char list[][MAX_TABLE_LEN]);
@@ -45,7 +51,7 @@ int check_if_id(char* lex);
 void check_token(char* lex, int* tok, int* len);
 void print_lexem(char* lex, int tam);
 void print_token(int tok);
-void read_keywords();
+void read_tokens();
 
 int main() {
 	int lin_num = 1; // counter of strings
@@ -55,7 +61,9 @@ int main() {
 	char* input_lin = (char*)malloc(INPUT_LIN_TAM * sizeof(char));
 	HANDLE hConsole;
 	int k = 0;
-
+	read_tokens();
+	Token tokens[1];
+	int tokens_size = 0;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	ofstream outputFile("output.txt");
 	ifstream inputFile("input.txt");
@@ -64,8 +72,8 @@ int main() {
 		char_itr = 0; // resets char_itr
 		//SetConsoleTextAttribute(hConsole, k < 254? k++ : k = 0);
 		//std::cout << lin_num++ << "   " << input_lin << std::endl; // print line
-		SetConsoleTextAttribute(hConsole, 253);
-		cout << (k < 9 ? "   " : (k < 99 ? "  ":" ")) << ++k << " ";
+		SetConsoleTextAttribute(hConsole, 245);
+		cout << (k < 9 ? "   " : (k < 99 ? "  " : " ")) << ++k << " ";
 		SetConsoleTextAttribute(hConsole, 12);
 		cout << " ";
 		while (input_lin[char_itr] != '\n' && input_lin[char_itr] != '\0') {
@@ -73,21 +81,18 @@ int main() {
 			t_len = 0; // lexem size = 0
 
 			check_token(&input_lin[char_itr], &t_tok, &t_len); //checks current lexem is token
-
-			/*t_tok <0 was agreed as a universal identifier that that line should be ignored*/
 			if (t_tok < 0) {
 				break;
 			}
 			else {
-				//SetConsoleTextAttribute(hConsole, color_table[t_tok]);
-				SetConsoleTextAttribute(hConsole, color_table[t_tok]);
-				print_lexem(&input_lin[char_itr], t_len);
-				//std::cout << " -> ";
-				//print_token(t_tok);
-				//std::cout << std::endl;
-				outputFile << ruby_table[t_tok] << " -> ";
-				for (int i = char_itr; i < t_len + char_itr; i++)
+				outputFile << token_table[t_tok] << " -> ";
+				string s;
+				for (int i = char_itr; i < t_len + char_itr; i++) {
 					outputFile << input_lin[i];
+					s.push_back(input_lin[i]);
+				}
+				tokens[tokens_size].add(s, t_tok);
+				tokens[tokens_size].get_token();
 				outputFile << endl;
 				char_itr += t_len;
 			}
@@ -135,8 +140,22 @@ void flush_input_lin(char* input_lin, int tam) {
 	}
 }
 
-void read_keywords() {
-	ifstream inputFile("input.txt");
+void read_tokens() {
+	int size = 0;
+	ifstream inputFile("keywords.txt");
+	char text[MAX_TABLE_LEN];
+	while (inputFile) {
+		inputFile.getline(text, MAX_TABLE_LEN);
+		int i = 0;
+		while (text[i] != '\n' && text[i] != '\0') {
+			keywords[size][i] = text[i];
+			i++;
+		}
+		size++;
+	}
+	keywords[size][0] = '\0';
+
+
 }
 
 //checks if lexem is keyword in the list [][MAX_TABLE_LEN]
@@ -183,6 +202,11 @@ int check_if_comment(char* lex) {
 // /[a-zA-Z_]{a-zA-Z0-9_}/
 int check_if_id(char* lex) {
 	int i = 0;
+	if (lex[i] == '$') i++;
+	else if (lex[i] == '@') {
+		if (lex[i + 1] == '@') i++;
+		i++;
+	}
 	if (!is_big_letter(lex[i]) && lex[i] != '_' && !is_letter(lex[i]))
 		return -1;
 	i++;
@@ -215,7 +239,7 @@ int check_if_float(char* lex) {
 		if (!is_digit(lex[i + 1])) return 0;
 	}
 	while (is_digit(lex[i])) i++;
-	if ((lex[i] == '.' && i > 0) && !is_letter(lex[i + 1])) {
+	if ((lex[i] == '.' && i > 0) && !is_letter(lex[i + 1]) && lex[i + 1] != '.') {
 		i++;
 		while (is_digit(lex[i])) i++;
 	}
@@ -251,6 +275,7 @@ int check_if_operator(char* lex) {
 		return skip_spaces_after_word(lex, i++);
 		break;
 	case '^':
+	case '!':
 		i++;
 		return skip_spaces_after_word(lex, i++);
 		break;
@@ -282,9 +307,22 @@ int check_if_operator(char* lex) {
 		}
 		return skip_spaces_after_word(lex, i++);
 		break;
+	case '.':
+		if (lex[i + 1] == '.') {
+			i += 2;
+		}
+		return skip_spaces_after_word(lex, i++);
+		break;
 	default:
 		return 0;
 	}
+}
+int check_if_punctuation(char* lex) {
+	int i = 0;
+	int k = 0;
+	for (i = 0; i < sizeof(punctuation_); i++)
+		if (lex[k] == punctuation_[i]) k++;
+	return k;
 }
 
 // checks if lexem is string
@@ -335,6 +373,11 @@ void check_token(char* lex, int* tok, int* len) {
 		*tok = 3;
 		return;
 	}
+	*len = check_if_punctuation(lex);
+	if (*len > 0) {
+		*tok = 8;
+		return;
+	}
 	*len = check_if_keyword(lex, keywords);
 	if (*len > 0) {
 		*tok = 2;
@@ -353,11 +396,6 @@ void check_token(char* lex, int* tok, int* len) {
 	*len = check_if_operator(lex);
 	if (*len > 0) {
 		*tok = 1;
-		return;
-	}
-	*len = check_if_keyword(lex, punctuation);
-	if (*len > 0) {
-		*tok = 8;
 		return;
 	}
 	*len = check_if_id(lex);
@@ -379,5 +417,5 @@ void print_lexem(char* lex, int tam) {
 
 
 void print_token(int tok) {
-	std::cout << ruby_table[tok];
+	std::cout << token_table[tok];
 }

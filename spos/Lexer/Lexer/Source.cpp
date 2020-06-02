@@ -24,12 +24,14 @@ bool open_for_variable = false;
 char token_table[][MAX_TABLE_LEN] = { "UNKNOWN", "OPERATOR", "KEYWORD", "STRING LITERAL", "INTEGER LITERAL",
 "FLOAT LITERAL", "IDENTIFIER", "COMMENT", "PUNCTUATION" };
 int token_color_table[] = { 12, 14, 8, 13, 9, 11, 7, 10, 3 };
+
 class Token {
 private:
 	string token_name;
 	int token_type;
 	int color;
 public:
+	static int size_of_array;
 	Token() {
 		this->token_name = "";
 	}
@@ -44,9 +46,11 @@ public:
 		cout << this->token_name;
 	}
 };
+
+
 // declaration of methods
 void flush_input_lin(char* input_lin, int tam);
-int check_if_keyword(char* lex, char list[][MAX_TABLE_LEN]);
+int check_if_token(char* lex, char list[][MAX_TABLE_LEN]);
 int check_if_id(char* lex);
 void check_token(char* lex, int* tok, int* len);
 void print_lexem(char* lex, int tam);
@@ -159,7 +163,7 @@ void read_tokens() {
 }
 
 //checks if lexem is keyword in the list [][MAX_TABLE_LEN]
-int check_if_keyword(char* lex, char list[][MAX_TABLE_LEN]) {
+int check_if_token(char* lex, char list[][MAX_TABLE_LEN]) {
 	int list_i = 0;
 	bool found;
 	int i;
@@ -185,11 +189,11 @@ int check_if_keyword(char* lex, char list[][MAX_TABLE_LEN]) {
 //checks if lexem is comment
 int check_if_comment(char* lex) {
 	if (lex[0] == '#') return strlen(lex);
-	else if (check_if_keyword(lex, ruby_comment_begin) > 0) {
+	else if (check_if_token(lex, ruby_comment_begin) > 0) {
 		global_comment_open = true;
 		return strlen(lex);
 	}
-	else if (check_if_keyword(lex, ruby_comment_end) > 0) {
+	else if (check_if_token(lex, ruby_comment_end) > 0) {
 		global_comment_open = false;
 		return strlen(lex);
 	}
@@ -378,7 +382,7 @@ void check_token(char* lex, int* tok, int* len) {
 		*tok = 8;
 		return;
 	}
-	*len = check_if_keyword(lex, keywords);
+	*len = check_if_token(lex, keywords);
 	if (*len > 0) {
 		*tok = 2;
 		return;

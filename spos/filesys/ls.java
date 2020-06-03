@@ -146,23 +146,23 @@ public class ls {
 
         // 2 task add uid
         short ts = stat.getUid();
-        s.append( ' ' );
-        s.append( ts );
-        s.append( ' ' );
+        s.append(' ');
+        s.append(ts);
+        s.append(' ');
 
         // 2 task add gid
         ts = stat.getGid();
-        s.append( ' ' );
-        s.append( ts );
-        s.append( ' ' );
+        s.append(' ');
+        s.append(ts);
+        s.append(' ');
 
         // 2 task add mode
         ts = (short) stat.getMode();
-        s.append( ' ' );
-        s.append( (ts & Kernel.S_IRWXU) >> 6 );
-        s.append( (ts & Kernel.S_IRWXG) >> 3 );
-        s.append( ts & Kernel.S_IRWXO );
-        s.append( ' ' );
+        s.append(' ');
+        s.append((ts & Kernel.S_IRWXU) >> 6);
+        s.append((ts & Kernel.S_IRWXG) >> 3);
+        s.append(ts & Kernel.S_IRWXO);
+        s.append(' ');
 
 
         // append the size in a field of 10
